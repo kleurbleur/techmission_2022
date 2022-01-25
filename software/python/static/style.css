@@ -1,0 +1,15 @@
+body {
+    width: 1920px;
+    height: 1080px;
+    background-image: url('/static/img/bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#battery_slider{
+    position: absolute;
+    height: 136px;
+    background-color: yellow;
+    top: 87%;
+    left: 462px;
+}
+

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        FLASK-SSE
+    </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <h1>FLASK-SSE</h1>
+    <h1 id="time"></h1>
+    <script>
+        var source = new EventSource("{{ url_for('sse.stream') }}");
+        source.addEventListener('greeting', function(event) {
+            var data = JSON.parse(event.data);
+            console.log(data);
+            $("#time").html(data);
+            // alert("The server says " + data.message);            
+            }, false);
+            // source.addEventListener('error', function(event) {
+            //     alert("Failed to connect to event stream. Is Redis running?");
+            // }, false);
+    </script>
+</body>    
+</html>

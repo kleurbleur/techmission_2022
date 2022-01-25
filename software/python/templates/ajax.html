@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+   <head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   </head>
+   <body>
+        <a href="/bioR/on">TURN ON</a>  
+        <a href="/bioR/off">TURN OFF</a>
+        <h1 id="num"></h1>
+        <h1 id="time"></h1>
+        <script>
+            setInterval(function(){$.ajax({
+                url: '/update',
+                type: 'POST',
+                success: function(response) {
+                    //console.log(response);
+                    $("#num").html(response["value"]);
+                    $("#time").html(response["time"]);
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            })}, 10);
+        </script>
+   </body>
+</html>
