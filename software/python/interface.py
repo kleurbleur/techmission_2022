@@ -1,10 +1,17 @@
 from gevent import monkey; monkey.patch_all()
-from flask import Flask, Response, render_template, stream_with_context
+from flask import Flask, Response, render_template
 from gevent.pywsgi import WSGIServer
-import json
-import time
+import json, time, board, busio
+i2c = busio.I2C(board.SCL, board.SDA)
+import adafruit_ads1x15.ads1115 as ADS
+from adafruit_ads1x15.analog_in import AnalogIn
 
 app = Flask(__name__)
+
+ads = ADS.ADS1115(i2c)
+chan = AnalogIn(ads, ADS.P0)
+
+
 generator_counter = 100
 battery_counter = 10
 mess_05 = "hidden"
@@ -26,6 +33,7 @@ def listen():
       global mess_05
       print('gen_counter: ', generator_counter)
       print('batt_counter: ', battery_counter)
+      print(chan.value, chan.voltage)
       generator_counter += 1
       if battery_counter == 300:
         mess_05 = "visible"
