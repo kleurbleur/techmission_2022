@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <h1>APP</h1>
+  <div id="generator_slider"></div>
   <div id="battery_slider"></div>
   
   <script>
@@ -21,8 +21,11 @@
       // console.log(e.data.color)
       data = JSON.parse(e.data)
 
-      document.querySelector("#battery_slider").innerText = data.counter
-      document.querySelector("#battery_slider").style.width = data.counter + "px"
+      document.querySelector("#battery_slider").innerText = data.battery_counter
+      document.querySelector("#battery_slider").style.width = data.battery_counter + "px"
+      document.querySelector("#generator_slider").innerText = data.generator_counter
+      document.querySelector("#generator_slider").style.width = data.generator_counter + "px"
+
     }, true)
 
   </script>

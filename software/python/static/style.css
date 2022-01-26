@@ -7,9 +7,17 @@ body {
 }
 #battery_slider{
     position: absolute;
-    height: 136px;
+    height: 118px;
+    border-radius: 5px;
     background-color: yellow;
-    top: 87%;
-    left: 462px;
+    top: 47.4%;
+    left: 833px;
 }
-
+#generator_slider{
+    position: absolute;
+    height: 151px;
+    border-radius: 17px;
+    background-color: yellow;
+    top: 84.8%;
+    left: 439px;
+}
