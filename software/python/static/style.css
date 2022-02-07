@@ -1,34 +1,128 @@
 body {
     width: 1920px;
     height: 1080px;
-    background-image: url('/static/img/bg.png');
+    background-image: url('/static/img/interface_vast.png'), url('/static/img/background.png');
     background-repeat: no-repeat;
     background-size: cover;
+    font-family: 'Gotham-Book', Helvetica, sans-serif;
+    font-size: 35px;
+    color: rgb(0, 226, 252)
 }
 #battery_slider{
     position: absolute;
     height: 118px;
     border-radius: 5px;
     background-color: yellow;
-    top: 47.4%;
+    top: 437px;
     left: 833px;
+}
+#battery_text{
+    position: absolute;
+    z-index: 1;
+    top: 470px;
+    left: 940px
 }
 #generator_slider{
     position: absolute;
     height: 151px;
     border-radius: 17px;
     background-color: yellow;
-    top: 84.8%;
+    top: 782px;
     left: 439px;
+}
+#generator_text{
+    position: absolute;
+    z-index: 1;
+    top: 835px;
+    left: 935px
+}
+
+
+#mess_01{
+    visibility: visible;
+    position: absolute;
+    height: 1080px;
+    width: 1920px;
+    top: 0px;
+    left: 0px;
+    background-image: url('/static/img/message_01_activeer_noodstroom.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#mess_02{
+    visibility: visible;
+    position: absolute;
+    height: 1080px;
+    width: 1920px;
+    top: 0px;
+    left: 0px;
+    background-image: url('/static/img/message_02_noodstroom_geactiveerd.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#mess_03{
+    visibility: visible;
+    position: absolute;
+    height: 1080px;
+    width: 1920px;
+    top: 0px;
+    left: 0px;
+    background-image: url('/static/img/message_03_kortsluiting_A.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#mess_04{
+    visibility: visible;
+    position: absolute;
+    height: 1080px;
+    width: 1920px;
+    top: 0px;
+    left: 0px;
+    background-image: url('/static/img/message_04_standby_B.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 #mess_05{
     visibility: visible;
     position: absolute;
-    height: 100%;
-    width: 100%;
+    height: 1080px;
+    width: 1920px;
     top: 0px;
     left: 0px;
-    background-image: url('/static/img/message_05_stroom_ok.png');
+    background-image: url('/static/img/message_05_fietsen.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#mess_06{
+    visibility: visible;
+    position: absolute;
+    height: 1080px;
+    width: 1920px;
+    top: 0px;
+    left: 0px;
+    background-image: url('/static/img/message_06_generator_activated.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#mess_07{
+    visibility: visible;
+    position: absolute;
+    height: 1080px;
+    width: 1920px;
+    top: 0px;
+    left: 0px;
+    background-image: url('/static/img/message_07_koppel_pop_up_3.0.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#mess_08{
+    visibility: visible;
+    position: absolute;
+    height: 1080px;
+    width: 1920px;
+    top: 0px;
+    left: 0px;
+    background-image: url('/static/img/message_08_batterij_offline_pop_up.png');
     background-repeat: no-repeat;
     background-size: cover;
 }

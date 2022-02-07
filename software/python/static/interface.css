@@ -1,0 +1,35 @@
+body {
+    width: 1920px;
+    height: 1080px;
+    background-image: ('/static/img/interface_vast.png');
+    background-image: url('/static/img/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#battery_slider{
+    position: absolute;
+    height: 118px;
+    border-radius: 5px;
+    background-color: yellow;
+    top: 47.4%;
+    left: 833px;
+}
+#generator_slider{
+    position: absolute;
+    height: 151px;
+    border-radius: 17px;
+    background-color: yellow;
+    top: 84.8%;
+    left: 439px;
+}
+#mess_05{
+    visibility: visible;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    background-image: url('/static/img/message_01_activeer_noodstroom.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}

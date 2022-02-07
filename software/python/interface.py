@@ -14,13 +14,14 @@ chan = AnalogIn(ads, ADS.P0)
 
 generator_counter = 100
 battery_counter = 10
+bike_01 = 0
 mess_05 = "hidden"
 
 
 ##############################
 @app.route("/")
 def render_index():
-  return render_template("index.html")
+  return render_template("interface.html")
 
 ##############################
 @app.route("/listen")
@@ -28,17 +29,21 @@ def listen():
 
   def respond_to_client():
     while True:
+      global bike_01
       global generator_counter
       global battery_counter
       global mess_05
-      print('gen_counter: ', generator_counter)
+      # print('gen_counter: ', generator_counter)
       print('batt_counter: ', battery_counter)
+      print('bike_01: ', bike_01)
+      # generator_counter += 1
       print(chan.value, chan.voltage)
-      generator_counter += 1
-      if battery_counter == 300:
+      if battery_counter >= 300:
         mess_05 = "visible"
       else:
-        battery_counter += 2
+        bike_01 = chan.value / 1000
+        battery_counter += int(bike_01)
+        # battery_counter += 2
       _data = json.dumps({
         "generator_counter": generator_counter,
         "battery_counter": battery_counter,
