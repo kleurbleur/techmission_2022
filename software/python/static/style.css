@@ -39,7 +39,7 @@ body {
 
 
 #mess_01{
-    visibility: visible;
+    visibility: hidden;
     position: absolute;
     height: 1080px;
     width: 1920px;
@@ -50,7 +50,7 @@ body {
     background-size: cover;
 }
 #mess_02{
-    visibility: visible;
+    visibility: hidden;
     position: absolute;
     height: 1080px;
     width: 1920px;
@@ -61,7 +61,7 @@ body {
     background-size: cover;
 }
 #mess_03{
-    visibility: visible;
+    visibility: hidden;
     position: absolute;
     height: 1080px;
     width: 1920px;
@@ -72,7 +72,7 @@ body {
     background-size: cover;
 }
 #mess_04{
-    visibility: visible;
+    visibility: hidden;
     position: absolute;
     height: 1080px;
     width: 1920px;
@@ -83,7 +83,7 @@ body {
     background-size: cover;
 }
 #mess_05{
-    visibility: visible;
+    visibility: hidden;
     position: absolute;
     height: 1080px;
     width: 1920px;
@@ -94,7 +94,7 @@ body {
     background-size: cover;
 }
 #mess_06{
-    visibility: visible;
+    visibility: hidden;
     position: absolute;
     height: 1080px;
     width: 1920px;
@@ -105,7 +105,7 @@ body {
     background-size: cover;
 }
 #mess_07{
-    visibility: visible;
+    visibility: hidden;
     position: absolute;
     height: 1080px;
     width: 1920px;
@@ -114,9 +114,10 @@ body {
     background-image: url('/static/img/message_07_koppel_pop_up_3.0.png');
     background-repeat: no-repeat;
     background-size: cover;
+    z-index: 2;
 }
 #mess_08{
-    visibility: visible;
+    visibility: hidden;
     position: absolute;
     height: 1080px;
     width: 1920px;
@@ -125,4 +126,5 @@ body {
     background-image: url('/static/img/message_08_batterij_offline_pop_up.png');
     background-repeat: no-repeat;
     background-size: cover;
+    z-index: 2;
 }

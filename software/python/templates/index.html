@@ -28,10 +28,12 @@
       console.log(e.data)
     }, false)
 
-    eventSource.addEventListener("online", function(e) {
-      // console.log(e.data.color)
+    eventSource.addEventListener("start", function(e) {
       data = JSON.parse(e.data)
-
+      document.querySelector("#mess_03").style.visibility = data.mess_03
+    },true)
+    eventSource.addEventListener("battery", function(e) {
+      data = JSON.parse(e.data)
       document.querySelector("#battery_text").innerText = data.battery_text + "%"
       document.querySelector("#battery_slider").style.width = data.battery_slider + "px" // max 267 px
       document.querySelector("#generator_text").innerText = data.battery_slider + "%"
