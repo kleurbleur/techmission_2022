@@ -6,12 +6,14 @@ import json, time, board, busio, subprocess
 i2c = busio.I2C(board.SCL, board.SDA)
 import adafruit_ads1x15.ads1115 as ADS
 from adafruit_ads1x15.analog_in import AnalogIn
+from gpiozero import DigitalOutputDevice, DigitalInputDevice
 
 app = Flask(__name__)
 
 ads = ADS.ADS1115(i2c)
-chan_01 = AnalogIn(ads, ADS.P0)
+chan_01 = AnalogIn(ads, ADS.P2)
 chan_02 = AnalogIn(ads, ADS.P3)
+flits_b_oranje = DigitalOutputDevice()
 
 start = True
 reset_button = False
@@ -100,15 +102,15 @@ def listen():
       global mess_07
       global mess_08
       if reset_button == True:
-        start = True
+            start = True
       if start == True and cables_a1 == True and cables_a2 == True and cables_a3 == True: #START OF THE INSTALLATION
             if scanner_running == False:
                   print("start scanner video")
-                  scanner_video = subprocess.Popen(["omxplayer", "static/video/test.mp4", "--loop", "--display=7"])
+                  scanner_video = subprocess.Popen(["omxplayer", "static/video/scanner_scant_mapped.mov", "--loop", "--display=7"])
             print("flitslicht A rood aan")
             print("ledstrip rood aan")
             print("audio kortsluiting aan")
-            audio_01 = subprocess.Popen(["omxplayer", "static/sound/01_kortsluiting_alarm_loop.mp3", "--loop"])
+            audio_01 = subprocess.Popen(["omxplayer", "static/sound/01_kortsluiting_alarm_loop.mp3", "--loop", "-o", "local"])
             bike_01 = 0
             bike_02 = 0
             generator_text = 0
@@ -147,7 +149,7 @@ def listen():
             print("flitslicht B oranje aan")
             print("ledstrip oranje aan")  
             audio_01.kill()
-            audio_02 = subprocess.Popen(["omxplayer", "static/sound/02_kortsluiting_standby_loop.mp3", "--loop"])
+            audio_02 = subprocess.Popen(["omxplayer", "static/sound/02_kortsluiting_standby_loop.mp3", "--loop", "-o", "local"])
             mess_03 = "hidden"
             mess_04 = "visible"      
             _data_cable_a = json.dumps({
@@ -156,26 +158,26 @@ def listen():
             })
             yield f"id: 1\ndata: {_data_cable_a}\nevent: cable_a\n\n" #we push the data towards the interface per event
       if cables_b1 and not all([cables_b1, cables_b2, cables_b3]): #
-            audio_03 = subprocess.Popen(["omxplayer", "static/sound/03_goede_kabel_groep.mp3"])
+            audio_03 = subprocess.Popen(["omxplayer", "static/sound/03_goede_kabel_groep.mp3", "-o", "local"])
             print("flitslicht b groen aan 4s") #TIMER UITZOEKEN
       elif cables_b2 and not all([cables_b1, cables_b2, cables_b3]): #
-            audio_03 = subprocess.Popen(["omxplayer", "static/sound/03_goede_kabel_groep.mp3"])
+            audio_03 = subprocess.Popen(["omxplayer", "static/sound/03_goede_kabel_groep.mp3", "-o", "local"])
             print("flitslicht b groen aan 4s") #TIMER UITZOEKEN
       elif cables_b3 and not all([cables_b1, cables_b2, cables_b3]): #
-            audio_03 = subprocess.Popen(["omxplayer", "static/sound/03_goede_kabel_groep.mp3"])
+            audio_03 = subprocess.Popen(["omxplayer", "static/sound/03_goede_kabel_groep.mp3", "-o", "local"])
             print("flitslicht b groen aan 4s") #TIMER UITZOEKEN - apart python script met simple timer en gpio handeling?
       elif all([cables_b1, cables_b2, cables_b3]):
             mess_04 = "hidden"
             print("flitslicht B groen aan")
             print("ledstrip blauw")
-            audio_04 = subprocess.Popen(["omxplayer", "static/sound/04_goede_kabels_all.mp3"])
-            audio_05 = subprocess.Popen(["omxplayer", "static/sound/05_kabels_ok_loop.mp3"])
+            audio_04 = subprocess.Popen(["omxplayer", "static/sound/04_goede_kabels_all.mp3", "-o", "local"])
+            audio_05 = subprocess.Popen(["omxplayer", "static/sound/05_kabels_ok_loop.mp3", "-o", "local"])
             if battery_slider >= 267: 
                   battery_slider = 267
                   battery_text = 100
                   status_100 = True
                   audio_05.kill()
-                  audio_06 = subprocess.Popen(["omxplayer", "static/sound/06_opstart_engine.mp3"]) #TIMER NODIG!
+                  audio_06 = subprocess.Popen(["omxplayer", "static/sound/06_opstart_engine.mp3", "-o", "local"]) #TIMER NODIG!
                   #status slider oplaten lopen naar 100% in sync met geluid!
             else:
                   mess_05 = "visible"
@@ -210,7 +212,7 @@ def listen():
             time.sleep(10)
             mess_06 = "hidden"
             mess_07 = "visible"
-            audio_07 = subprocess.Popen(["omxplayer", "static/sound/07_pop_updated.mp3"])             
+            audio_07 = subprocess.Popen(["omxplayer", "static/sound/07_pop_updated.mp3", "-o", "local"])             
       time.sleep(0.1)
   return Response(respond_to_client(), mimetype='text/event-stream')
   
