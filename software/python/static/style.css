@@ -8,6 +8,32 @@ body {
     font-size: 35px;
     color: rgb(0, 226, 252)
 }
+#generator_slider{
+    position: absolute;
+    height: 151px;
+    border-radius: 17px;
+    background-color: yellow;
+    top: 782px;
+    left: 439px;
+}
+#generator_text{
+    position: absolute;
+    z-index: 1;
+    top: 835px;
+    left: 935px
+}
+#generator_volt{
+    position: absolute;
+    z-index: 1;
+    top: 863px;
+    left: 278px;
+}
+#generator_ampere{
+    position: absolute;
+    z-index: 1;
+    top: 863px;
+    left: 1656px;
+}
 #battery_slider{
     position: absolute;
     height: 118px;
@@ -22,19 +48,17 @@ body {
     top: 470px;
     left: 940px
 }
-#generator_slider{
-    position: absolute;
-    height: 151px;
-    border-radius: 17px;
-    background-color: yellow;
-    top: 782px;
-    left: 439px;
-}
-#generator_text{
+#battery_volt{
     position: absolute;
     z-index: 1;
-    top: 835px;
-    left: 935px
+    top: 490px;
+    left: 442px;
+}
+#battery_ampere{
+    position: absolute;
+    z-index: 1;
+    top: 490px;
+    left: 1475px;
 }
 
 

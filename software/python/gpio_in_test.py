@@ -1,4 +1,3 @@
-from cgitb import reset
 from gpiozero import DigitalOutputDevice, DigitalInputDevice
 import time
 

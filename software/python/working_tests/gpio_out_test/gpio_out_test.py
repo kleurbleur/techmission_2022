@@ -1,4 +1,3 @@
-from ast import While
 from gpiozero import DigitalOutputDevice, DigitalInputDevice
 import time
 

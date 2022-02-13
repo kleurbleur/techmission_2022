@@ -1,14 +1,13 @@
-from ast import While
 from gpiozero import DigitalOutputDevice, DigitalInputDevice
 import time
 
-flits_a_rood = DigitalOutputDevice(15)
-flits_b_groen = DigitalOutputDevice(23)
-flits_b_oranje = DigitalOutputDevice(24)
-flits_b_rood = DigitalOutputDevice(25)
-ledstrip_rood = DigitalOutputDevice(21)
-ledstrip_groen = DigitalOutputDevice(20)
-ledstrip_blauw = DigitalOutputDevice(16)
+flits_a_rood = DigitalOutputDevice(15, active_high=False)
+flits_b_groen = DigitalOutputDevice(23, active_high=False)
+flits_b_oranje = DigitalOutputDevice(24, active_high=False)
+flits_b_rood = DigitalOutputDevice(25, active_high=False)
+ledstrip_rood = DigitalOutputDevice(21, active_high=False)
+ledstrip_groen = DigitalOutputDevice(20, active_high=False)
+ledstrip_blauw = DigitalOutputDevice(16, active_high=False)
 
 
 while True:
