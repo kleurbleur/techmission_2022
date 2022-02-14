@@ -304,7 +304,7 @@ def listen():
                   mess_05 = "visible"
                   bike_01 = chan_01.value / 58000 # 29000 is de max wanneer je hard fietst, deze aanpassen zodat het langer duurt
                   bike_02 = chan_02.value / 58000 # 29000 is de max wanneer je hard fietst, deze aanpassen zodat het langer duurt
-                  if bike_01 >= 0.5 or bike_02 >= 0.5: #DEBUG, een fiets is genoeg
+                  if bike_01 >= 0.5 and bike_02 >= 0.5: #DEBUG or, een fiets is genoeg, twee moet het and zijn
                         battery_icon = "visible"
                         battery_slider += bike_01 + bike_02 #max 267
                         battery_text = battery_slider/2.7
