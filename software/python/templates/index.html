@@ -15,6 +15,7 @@
   <div id="battery_text"></div>
   <div id="battery_volt"></div>
   <div id="battery_ampere"></div>
+  <div id="battery_icon"></div>
 
   
   <div id="mess_01"></div>
@@ -35,14 +36,15 @@
 
     eventSource.addEventListener("start", function(e) {
       data = JSON.parse(e.data)
-      document.querySelector("#generator_slider").style.width = data.generator_slider + "px" // max 1085 px      document.querySelector("#mess_01").style.visibility = data.mess_01
+      document.querySelector("#generator_slider").style.width = data.generator_slider + "px" // max 1085 px
       document.querySelector("#generator_text").innerText = data.generator_text + "%"
       document.querySelector("#generator_volt").innerText = data.generator_volt
-      document.querySelector("#generator_ampere").innerText = data.generator_ampere
+      document.querySelector("#generator_ampere").innerText = data.generator_ampere.toFixed(2)
       document.querySelector("#battery_slider").style.width = data.battery_slider + "px" // max 267 px
       document.querySelector("#battery_text").innerText = data.battery_text + "%"
       document.querySelector("#battery_volt").innerText = data.battery_volt
       document.querySelector("#battery_ampere").innerText = data.battery_ampere
+      document.querySelector("#battery_icon").style.visibility = data.battery_icon
       document.querySelector("#mess_01").style.visibility = data.mess_01
       document.querySelector("#mess_02").style.visibility = data.mess_02
       document.querySelector("#mess_03").style.visibility = data.mess_03
@@ -61,28 +63,34 @@
 
     eventSource.addEventListener("battery", function(e) {
       data = JSON.parse(e.data)
-      document.querySelector("#generator_slider").style.width = data.generator_slider + "px" // max 1085 px      document.querySelector("#mess_01").style.visibility = data.mess_01
-      document.querySelector("#generator_text").innerText = data.generator_text + "%"
-      document.querySelector("#generator_volt").innerText = data.generator_volt
-      document.querySelector("#generator_ampere").innerText = data.generator_ampere
       document.querySelector("#battery_slider").style.width = data.battery_slider + "px" // max 267 px
+      document.querySelector("#battery_slider").style.backgroundColor = data.battery_slider_color
       document.querySelector("#battery_text").innerText = data.battery_text + "%"
       document.querySelector("#battery_volt").innerText = data.battery_volt
       document.querySelector("#battery_ampere").innerText = data.battery_ampere
+      document.querySelector("#battery_icon").style.visibility = data.battery_icon
       document.querySelector("#mess_04").style.visibility = data.mess_04
       document.querySelector("#mess_05").style.visibility = data.mess_05
     }, true)
 
+    eventSource.addEventListener("generator_slider", function(e) {
+      data = JSON.parse(e.data)
+      document.querySelector("#generator_slider").style.width = data.generator_slider + "px" // max 1085 px
+      document.querySelector("#generator_text").style.color = data.generator_text_color
+      document.querySelector("#generator_text").innerText = data.generator_text + "%"
+      document.querySelector("#generator_volt").innerText = data.generator_volt
+      document.querySelector("#generator_ampere").innerText = data.generator_ampere.toFixed(2)
+    }, true)    
+
     eventSource.addEventListener("status_100", function(e) {
       data = JSON.parse(e.data)
-      document.querySelector("#mess_04").style.visibility = data.mess_03
-      document.querySelector("#mess_05").style.visibility = data.mess_04
+      document.querySelector("#mess_05").style.visibility = data.mess_05
+      document.querySelector("#mess_06").style.visibility = data.mess_06
     },true)
 
     eventSource.addEventListener("generator_100", function(e) {
       data = JSON.parse(e.data)
-      document.querySelector("#mess_05").style.visibility = data.mess_06
-      document.querySelector("#mess_06").style.visibility = data.mess_07
+      document.querySelector("#mess_07").style.visibility = data.mess_07
     },true)
 
 
