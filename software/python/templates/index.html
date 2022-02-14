@@ -65,7 +65,7 @@
       data = JSON.parse(e.data)
       document.querySelector("#battery_slider").style.width = data.battery_slider + "px" // max 267 px
       document.querySelector("#battery_slider").style.backgroundColor = data.battery_slider_color
-      document.querySelector("#battery_text").innerText = data.battery_text + "%"
+      document.querySelector("#battery_text").innerText = data.battery_text.toFixed() + "%"
       document.querySelector("#battery_volt").innerText = data.battery_volt
       document.querySelector("#battery_ampere").innerText = data.battery_ampere
       document.querySelector("#battery_icon").style.visibility = data.battery_icon

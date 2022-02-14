@@ -281,7 +281,7 @@ def listen():
                         generator_ampere += 0.16 #0.56
                         generator_text += 1
                         generator_slider += 10.85
-                        if generator_slider >= 400:
+                        if generator_slider >= 500:
                               generator_text_color = "rgb(27, 30, 61)"
                         else:
                               generator_text_color = "rgb(0, 226, 252)"
@@ -302,18 +302,18 @@ def listen():
                   print("bikes ready")
                   mess_04 = "hidden"
                   mess_05 = "visible"
-                  bike_01 = chan_01.value / 29000 # 29000 is de max wanneer je hard fietst, deze aanpassen zodat het langer duurt
-                  bike_02 = chan_02.value / 29000 # 29000 is de max wanneer je hard fietst, deze aanpassen zodat het langer duurt
-                  if bike_01 >= 1 or bike_02 >= 1: #DEBUG, een fiets is genoeg
+                  bike_01 = chan_01.value / 58000 # 29000 is de max wanneer je hard fietst, deze aanpassen zodat het langer duurt
+                  bike_02 = chan_02.value / 58000 # 29000 is de max wanneer je hard fietst, deze aanpassen zodat het langer duurt
+                  if bike_01 >= 0.5 or bike_02 >= 0.5: #DEBUG, een fiets is genoeg
                         battery_icon = "visible"
-                        battery_slider += int(bike_01) + int(bike_02) #max 267
-                        battery_text = int(battery_slider/2.7)
+                        battery_slider += bike_01 + bike_02 #max 267
+                        battery_text = battery_slider/2.7
                   # else:
                   #       while bike_01 < 0.1 and bike_02 < 0.1: 
                   #             battery_slider -= 0.5
                   #             battery_text -= 0.5
                   #             time.sleep(0.16)
-                  if bike_01 >= 1 or bike_02 >= 1:
+                  if bike_01 >= 0.5 or bike_02 >= 0.5:
                         battery_volt = 230
                   else:
                         battery_volt = 0
